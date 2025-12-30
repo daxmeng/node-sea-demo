@@ -2,7 +2,7 @@
 set -e
 
 # 设置默认的应用名称
-APP_NAME=${1:-"handleLink"}
+APP_NAME=${1:-"host_app"}
 
 # 1. 使用 Rollup 打包项目
 echo "Step 1/5: 打包项目..."
@@ -14,7 +14,7 @@ node --experimental-sea-config sea-config.json
 
 # 3. 移除现有签名
 echo "Step 3/5: 移除旧签名..."
-cp ~/.volta/tools/image/node/22.14.0/bin/node dist/$APP_NAME
+cp ~/.volta/tools/image/node/22.19.0/bin/node dist/$APP_NAME
 codesign --remove-signature dist/$APP_NAME
 
 # 4. 注入 SEA blob 到可执行文件
